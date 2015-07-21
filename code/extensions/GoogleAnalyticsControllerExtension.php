@@ -1,11 +1,6 @@
 <?php
 
 class GoogleAnalyticsControllerExtension extends Extension {
-    
-        // return the google analytics id
-        public function GoogleAnalyticsId(){
-            return GOOGLE_ANALYTICS_ID;
-        }
         
         // return the google analytics id
         public function GoogleAnalyticsPrivacyUrl(){
@@ -26,5 +21,11 @@ class GoogleAnalyticsControllerExtension extends Extension {
                 return false;
             }
         }
+		
+		public function onAfterInit(){
+			Requirements::javascriptTemplate('gua-cookie-policy/javascript/google-analytics.js', array(
+				'GoogleAnalyticsId' => GOOGLE_ANALYTICS_ID
+			));
+		}
         
 }

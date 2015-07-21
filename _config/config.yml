@@ -1,0 +1,5 @@
+name: gua-cookie-policy
+---
+Controller:
+  extensions:
+    - GoogleAnalyticsControllerExtension
