@@ -26,10 +26,16 @@ inside your template(s) place the notification alert window and the analytics ja
 
 ```
 # in body
-<% include CookiesWarning %>
+place right behind the opening body tag
+<% include CookiesWarningOverlay %>
+to show a small semi transparent overlay on the top of the page
 
-# in bottom
-<% include GoogleAnalytics %>
+or
+
+place somewhere in between your body tag
+<% include CookiesWarning %>
+to have an alert box shown
+
 ```
 
 ## Further information
