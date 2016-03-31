@@ -23,6 +23,7 @@ class GoogleAnalyticsControllerExtension extends Extension {
         }
 		
 		public function onAfterInit(){
+			Requirements::javascript('gua-cookie-policy/javascript/js.cookie.min.js');
 			Requirements::javascriptTemplate('gua-cookie-policy/javascript/google-analytics.js', array(
 				'GoogleAnalyticsId' => GOOGLE_ANALYTICS_ID
 			));
