@@ -20,3 +20,10 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+(function(){
+	if(!Cookies.get('_gua_cwc')){
+		Cookies.set('_gua_cwc', true, { expires: (365*10) });
+		$('#GoogleCookieNotification').show();
+	};
+})();

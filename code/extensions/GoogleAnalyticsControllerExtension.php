@@ -9,7 +9,7 @@ class GoogleAnalyticsControllerExtension extends Extension {
         
         public function CookiesConfirmed(){
             // Always hide on Google Bot
-            if($this->owner->IsGooglebot()) return false;
+            //if($this->owner->IsGooglebot()) return true;
             
             if(Session::get('_gua_cwc') || Cookie::get('_gua_cwc')){
                 if(!Session::get('_gua_cwc')) Session::set('_gua_cwc', true);
@@ -23,6 +23,7 @@ class GoogleAnalyticsControllerExtension extends Extension {
         }
 		
 		public function onAfterInit(){
+			Requirements::javascript('gua-cookie-policy/javascript/js.cookie.min.js');
 			Requirements::javascriptTemplate('gua-cookie-policy/javascript/google-analytics.js', array(
 				'GoogleAnalyticsId' => GOOGLE_ANALYTICS_ID
 			));
