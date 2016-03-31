@@ -22,7 +22,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 
 (function(){
-	if(Cookies.get('_gua_cwc') == 'undefined'){
+	if(!Cookies.get('_gua_cwc')){
 		Cookies.set('_gua_cwc', true, { expires: (365*10) });
 		$('#GoogleCookieNotification').show();
 	};
