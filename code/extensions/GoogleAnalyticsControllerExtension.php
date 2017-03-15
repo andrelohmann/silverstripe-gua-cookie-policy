@@ -22,11 +22,13 @@ class GoogleAnalyticsControllerExtension extends Extension {
             }
         }
 		
-		public function onAfterInit(){
-			Requirements::javascript('gua-cookie-policy/javascript/js.cookie.min.js');
-			Requirements::javascriptTemplate('gua-cookie-policy/javascript/google-analytics.js', array(
-				'GoogleAnalyticsId' => GOOGLE_ANALYTICS_ID
-			));
-		}
+        public function onAfterInit(){
+            if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Speed Insights') === false){
+                Requirements::javascript('gua-cookie-policy/javascript/js.cookie.min.js');
+                Requirements::javascriptTemplate('gua-cookie-policy/javascript/google-analytics.js', array(
+                        'GoogleAnalyticsId' => GOOGLE_ANALYTICS_ID
+                ));
+            }
+        }
         
 }
