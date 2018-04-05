@@ -1,16 +1,16 @@
 <?php
 
 class GoogleAnalyticsControllerExtension extends Extension {
-        
+
         // return the google analytics id
         public function GoogleAnalyticsPrivacyUrl(){
-            return GOOGLE_ANALYTICS_PRIVACY_URL;
+            return Config::inst()->get('GoogleAnalyticsControllerExtension', 'google_analytics_privacy_url');
         }
-        
+
         public function CookiesConfirmed(){
             // Always hide on Google Bot
             //if($this->owner->IsGooglebot()) return true;
-            
+
             if(Session::get('_gua_cwc') || Cookie::get('_gua_cwc')){
                 if(!Session::get('_gua_cwc')) Session::set('_gua_cwc', true);
                 return true;
@@ -21,14 +21,14 @@ class GoogleAnalyticsControllerExtension extends Extension {
                 return false;
             }
         }
-		
+
         public function onAfterInit(){
             if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Speed Insights') === false){
                 Requirements::javascript('gua-cookie-policy/javascript/js.cookie.min.js');
                 Requirements::javascriptTemplate('gua-cookie-policy/javascript/google-analytics.js', array(
-                        'GoogleAnalyticsId' => GOOGLE_ANALYTICS_ID
+                        'GoogleAnalyticsId' => Config::inst()->get('GoogleAnalyticsControllerExtension', 'google_analytics_id')
                 ));
             }
         }
-        
+
 }

@@ -7,7 +7,7 @@
 
 ## Requirements
 
-Silverstripe 3.2.x
+Silverstripe 3.6.x
 
 ## Introduction
 
@@ -20,6 +20,19 @@ Add the following to your _ss_environment.php
 ```
 define('GOOGLE_ANALYTICS_ID', 'UA-xxx-xxx-xxx');
 define('GOOGLE_ANALYTICS_PRIVACY_URL', 'PATH_TO_PRIVACY_POLICIES');
+```
+
+or define a constant 'GOOGLE_ANALYTICS_SS_MANAGED'
+
+```
+define('GOOGLE_ANALYTICS_SS_MANAGED', true);
+```
+
+and set google analytics config somewhere in your code like so
+
+```
+Config::inst()->update('GoogleAnalyticsControllerExtension', 'google_analytics_privacy_url', 'PATH_TO_PRIVACY_POLICIES');
+Config::inst()->update('GoogleAnalyticsControllerExtension', 'google_analytics_id', 'UA-xxx-xxx-xxx');
 ```
 
 inside your privacy policies you need to include the google privacy notes
@@ -51,12 +64,3 @@ information can be found here (german)
 https://www.datenschutzbeauftragter-info.de/fachbeitraege/google-analytics-datenschutzkonform-einsetzen/
 
 https://developers.google.com/analytics/devguides/collection/gajs/?hl=de#disable
-
-### Notice
-This repository uses the git flow paradigm.
-After each release cycle, do not forget to push tags, master and develop to the remote origin
-```
-git push --tags
-git push origin develop
-git push origin master
-```
