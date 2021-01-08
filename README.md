@@ -7,13 +7,15 @@
 
 ## Requirements
 
-Silverstripe 3.6.x
+Silverstripe 3.7.x
 
 ## Introduction
 
 Silverstripe Implementation of google analytics with cooky notification to be compliant with EU cookie law
 
 ## Usage
+
+### Analytics ID/Tag
 
 Add the following to your _ss_environment.php
 
@@ -39,21 +41,34 @@ inside your privacy policies you need to include the google privacy notes
 ```
 <%t GoogleAnalytics.PRIVACYINFO "GoogleAnalytics.PRIVACYINFO" %>
 ```
-inside your template(s) place the notification alert window and the analytics javascript code
 
+### Javascript
+
+inside your template(s) place the analytics javascript code
+
+place between your head tags
 ```
-# in body
+<% include GoogleAnalyticsScript %>
+```
+
+### Cookies Overlay
+
+inside your template(s) place the notification alert window 
+
 place right behind the opening body tag
+```
 <% include CookiesWarningOverlay %>
+```
 to show a small semi transparent overlay on the top of the page
 
 or
 
 place somewhere in between your body tag
+```
 <% include CookiesWarning %>
+```
 to have an alert box shown
 
-```
 
 ## Further information
 
